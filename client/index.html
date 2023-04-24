@@ -8,8 +8,15 @@
   </head>
   <body>
     <header><h1>Ron Swanson Quote Generator</h1></header>
-    <p>Choose the left button to load the data and the right button to display a Quote!</p>
-    Hello world
+    <p>
+      Click on the button to display a random Ron Swanson quote!
+    </p>
+    <form action="https://ron-swanson-quotes.herokuapp.com/v2/quotes">
+      <button type="button" id="data_load">Generate Quote</button>
+    </form>
+    <h3>Quote</h3>
+          <ul class="box" id= "quote">
+          </ul>
     <footer>
       Github Account Name: bkotler
       <a
