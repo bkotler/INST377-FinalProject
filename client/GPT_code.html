@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess the Ron Swanson Quote</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			text-align: center;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+			border-radius: 5px;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		button {
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+			margin-top: 20px;
+			font-size: 18px;
+		}
+
+		button:hover {
+			background-color: #555;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin-top: 20px;
+			width: 80%;
+			max-width: 500px;
+		}
+
+		p {
+			font-size: 20px;
+			margin-top: 40px;
+		}
+
+		.correct {
+			color: green;
+		}
+
+		.incorrect {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Guess the Ron Swanson Quote</h1>
+		<p>Can you guess the missing word in this quote?</p>
+		<p id="quote"></p>
+		<input type="text" id="guess" placeholder="Type your guess here">
+		<button onclick="checkGuess()">Guess</button>
+		<p id="result"></p>
+	</div>
+
+	<script>
+		// Get a random Ron Swanson quote
+		function getRandomQuote() {
+			fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
+				.then(response => response.json())
+				.then(data => {
+					let quote = data[0];
+					// Replace a random word in the quote with underscores
+					let words = quote.split(' ');
+					let index = Math.floor(Math.random() * words.length);
+					words[index] = '_'.repeat(words[index].length);
+					quote = words.join(' ');
+					// Display the quote on the page
+					document.getElementById('quote').innerHTML = quote;
+					// Save the answer to a global variable
+					answer = words[index];
+				});
+		}
+
+		// Check the user's guess
+		function checkGuess() {
+			let guess = document.getElementById('guess').value.toLowerCase();
+			if (guess === answer) {
+				document.getElementById('result').className = 'correct';
+				document.getElementById('result').innerHTML = 'You got it!';
+				getRandomQuote();
+			} else {
+				document.getElementById('result').className = 'incorrect';
+				document.getElementById('result').innerHTML = 'Try again.';
+			}
+		}
+
+		// Start the game
+		let answer;
+		getRandomQuote();
+	</script>
+</body>
+</html>
