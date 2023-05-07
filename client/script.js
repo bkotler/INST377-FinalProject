@@ -22,7 +22,9 @@ function injectHTML(list) {
 async function mainEvent(){
     const loadDataButton = document.querySelector("#data_load");
     const mainForm = document.querySelector('.main_form'); 
-    const submitButton = document.querySelector('#submit')
+    const submitButton = document.querySelector('#submit');
+    const storedData = localStorage.getItem('storedData');
+    const parsedData = JSON.parse(storedData);
     let currentList = [];
     loadDataButton.addEventListener('click', async (event) => { 
       console.log('Loading data');
