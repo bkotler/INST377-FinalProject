@@ -45,12 +45,13 @@ async function mainEvent(){
       console.log(formProps.textbox);
       if (lastWord == formProps.textbox){
         console.log('true');
+        target.innerHTML = '';
         target.innerHTML += 'Correct!';
       }
       else {
         console.log('false');
-        console.log('true');
-         target = document.querySelector('#check');
+        target = document.querySelector('#check');
+        target.innerHTML = '';
         target.innerHTML += 'Incorrect!';
       }
     })

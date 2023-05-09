@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header><h1>Complete the Ron Swanson Quote!</h1></header>
+    <div class="wrapper">
+    <header class="header"><h1>Complete the Ron Swanson Quote!</h1></header>
+    <div class="top_section box">
+      <img src="images/ron-swanson.jpg" alt="Photo of Ron Swanson">
     <p>
       Click on the button to display a random Ron Swanson quote!
     </p>
     <form action="https://ron-swanson-quotes.herokuapp.com/v2/quotes">
       <button type="button" id="data_load">Generate Quote</button>
     </form>
+  </div>
+  <div class="bottom_section box">
     <h3>Quote</h3>
           <ul class="box" id= "quote">
           </ul>
@@ -23,6 +28,8 @@
       <button type="button" id="submit">Submit</button>
     <p id = 'check'></p>
     </form>
+  </div>
+  </div>
     <footer>
       Github Account Name: bkotler
       <a
